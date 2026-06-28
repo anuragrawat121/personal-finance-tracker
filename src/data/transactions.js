@@ -1,0 +1,17 @@
+export const transactions = [
+    { id: 1, title: "Salary", amount: 3500, type: "income", category: "Salary", date: "2024-06-01" },
+    { id: 2, title: "Rent", amount: 1200, type: "expense", category: "Housing", date: "2024-06-02" },
+    { id: 3, title: "Groceries", amount: 150, type: "expense", category: "Food", date: "2024-06-03" },
+    { id: 4, title: "Freelance Project", amount: 800, type: "income", category: "Freelance", date: "2024-06-05" },
+    { id: 5, title: "Netflix", amount: 15, type: "expense", category: "Entertainment", date: "2024-06-06" },
+    { id: 6, title: "Electricity Bill", amount: 90, type: "expense", category: "Utilities", date: "2024-06-07" },
+    { id: 7, title: "Gym Membership", amount: 40, type: "expense", category: "Health", date: "2024-06-08" },
+    { id: 8, title: "Bonus", amount: 500, type: "income", category: "Salary", date: "2024-06-10" },
+    { id: 9, title: "Dinner Out", amount: 60, type: "expense", category: "Food", date: "2024-06-11" },
+    { id: 10, title: "Internet Bill", amount: 50, type: "expense", category: "Utilities", date: "2024-06-12" },
+    { id: 11, title: "Online Course", amount: 30, type: "expense", category: "Education", date: "2024-06-13" },
+    { id: 12, title: "YouTube Premium", amount: 14, type: "expense", category: "Entertainment", date: "2024-06-14" },
+    { id: 13, title: "Clothing", amount: 120, type: "expense", category: "Shopping", date: "2024-06-15" },
+    { id: 14, title: "Side Project Income", amount: 300, type: "income", category: "Freelance", date: "2024-06-17" },
+    { id: 15, title: "Doctor Visit", amount: 80, type: "expense", category: "Health", date: "2024-06-18" },
+];
