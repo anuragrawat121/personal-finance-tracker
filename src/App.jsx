@@ -5,15 +5,25 @@ import { TransactionForm } from './components/TransactionForm'
 import { TransactionList } from './components/TransactionList'
 import { transactions as initialData } from './data/transactions'
 import { transactionReducer } from './reducer/transactionReducer'
-import { useLocalStorage } from './hooks/useLocalStorage'
 import { FilterBar } from './components/FilterBar'
 
-export default function App() {
-  const [savedTransactions, setSavedTransactions] = useLocalStorage('transactions', initialData)
+const STORAGE_KEY = 'transactions'
 
+function loadTransactions(initial) {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY)
+    return saved ? JSON.parse(saved) : initial
+  } catch (error) {
+    console.error('Error reading localStorage:', error)
+    return initial
+  }
+}
+
+export default function App() {
   const [transactions, dispatch] = useReducer(
     transactionReducer,
-    savedTransactions
+    initialData,
+    loadTransactions
   )
 
   const [filters, setFilters] = useState({
@@ -22,9 +32,13 @@ export default function App() {
     search: ''
   })
 
-  // Sync to localStorage whenever transactions change
+  // Save to localStorage whenever transactions change
   useEffect(() => {
-    setSavedTransactions(transactions)
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions))
+    } catch (error) {
+      console.error('Error writing localStorage:', error)
+    }
   }, [transactions])
 
   // Derived state — computed from transactions + filters, never stored
@@ -45,7 +59,6 @@ export default function App() {
 
   function handleFilterChange(newFilters) {
     setFilters(prev => ({ ...prev, ...newFilters }))
-    
   }
 
   return (
